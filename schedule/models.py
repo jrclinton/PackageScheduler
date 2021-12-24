@@ -3,6 +3,8 @@ from django.db import models
 # Create your models here.
 
 import datetime
+
+from django.db.models import Sum
 from django.utils import timezone
 
 class Client(models.Model):
@@ -13,6 +15,9 @@ class Client(models.Model):
     def __str__(self):
         full_name = self.last_name + self.first_name
         return  str(full_name)
+
+    def sessions_remaining(self):
+        return self.packages_set.aggregate(Sum('session_count'))['session_count__sum']
 
 class Event(models.Model):
     title = models.CharField(max_length=200)

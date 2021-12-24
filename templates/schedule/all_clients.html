@@ -1,0 +1,15 @@
+<header>All Clients</header>
+<table>
+    <tr>
+        <th>Client</th>
+        <th>Session Remaining</th>
+        <th>Details(coming soon)</th>
+    </tr>
+    {% for client in client_list_desc %}
+    <tr>
+        <td>{{ client.last_name }}, {{ client.first_name }}</td>
+        <td>{{ client.sessions_remaining }}</td>
+        <td>Coming Soon</td>
+    </tr>
+    {% endfor %}
+</table>
